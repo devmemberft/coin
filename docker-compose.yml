@@ -1,0 +1,16 @@
+networks:
+  ollama-net:
+    external: true
+
+services:
+  frontend:
+    build: ./frontend/microservices/coin
+    container_name: miselium_coin
+    ports:
+      - "1980:1980"
+    environment:
+    volumes:
+      - .:/app
+    command: npm run start:dev  # o simplemente node dist/main.js si es producción
+    networks:
+      - ollama-net
