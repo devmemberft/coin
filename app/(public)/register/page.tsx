@@ -1,12 +1,12 @@
 'use client'
 
-import { LogIn, ArrowRight, SquareUserRound, UserPlus } from "lucide-react";
+import { LogIn, ArrowRight, SquareUserRound } from "lucide-react";
 import { useRegister } from "../../hooks/useRegister";
 import { generateCatpcha } from "../../utils/apiClient";
 import { useState } from "react";
 
 export default function register() {
-    const [gen_captcha_value, setGenCaptchaValue] = useState(() => generateCatpcha());
+    const [gen_captcha_value] = useState(() => generateCatpcha());
     const { captcha_value, setCaptchaValue,handleRegister, loading, errorMsg } = useRegister(() => (window.location.href="/postregister"));
     return(
         <div className="register-main-container h-screen w-screen">

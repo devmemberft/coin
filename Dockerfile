@@ -19,7 +19,7 @@ COPY . .
 #COPY --from=builder /app/apps/backend/package.json ./
 #COPY --from=builder /miselio/apps/backend/package.json ./
 #RUN npm install --only=production
-
+ENV PORT 1980 
 EXPOSE 1980
 
 #CMD ["node", "dist/main"]

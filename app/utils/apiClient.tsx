@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as dotenv from 'dotenv';
 dotenv.config();
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://api-purple-smoke-666.fly.dev',
     withCredentials: true,
@@ -65,14 +65,15 @@ export const generateCatpcha = async() => {
         if(res){
             return res.captcha_value;
         }else{
-            res?.error;
+            return res?.error;
         }
         
-    }catch(err:any){throw err}
+    }catch(err:any){throw err.message}
 }
 
 export const getProfile = async (email:any) => {
     return await api.get('auth/profile', email); // endpoint protegido que da info del usuario
 }
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // putData, deleteData, etc.
