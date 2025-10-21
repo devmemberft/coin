@@ -1,5 +1,3 @@
-'use client'
-
 import { LogIn, ArrowRight, SquareUserRound } from "lucide-react";
 import { useRegister } from "../../hooks/useRegister";
 import { generateCatpcha } from "../../utils/apiClient";

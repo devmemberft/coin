@@ -1,9 +1,7 @@
 import axios from 'axios';
-import * as dotenv from 'dotenv';
-dotenv.config();
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://api-purple-smoke-666.fly.dev',
+    baseURL:'api.rawtechroots.cloud',
     withCredentials: true,
     
     headers: {
