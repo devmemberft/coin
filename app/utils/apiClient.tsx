@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL:'api.rawtechroots.cloud',
+    baseURL:'https://api.rawtechroots.cloud',
     withCredentials: true,
     
     headers: {
@@ -23,7 +23,7 @@ export const postData = async <T = any>(endpoint:string, data:any): Promise<T> =
         const response = await api.post<T>(endpoint,data);
         return response.data;
     } catch(error:any) {
-        throw error.response?.data || { message: "Unexpected error."};
+        throw error.response?.data || { message: "Unexpected error. Check de postData method in utils "};
     }
 }
 
@@ -57,11 +57,13 @@ export const keyRegister = async (captcha_value:string) => {
     return await postData<{success:boolean}>('/api/finances/auth/register',captcha_value);
 }
 
-export const generateCatpcha = async() => {
+export const generateCaptcha = async() => {
     try{
         const res =  await getData('/api/finances/auth/captcha');
+        const data = await res.json();
+        console.log('Captcha generado: ', data);
         if(res){
-            return res.captcha_value;
+            return data.captcha_value;
         }else{
             return res?.error;
         }

@@ -1,12 +1,21 @@
 'use client'
+
 import { LogIn, ArrowRight, SquareUserRound } from "lucide-react";
 import { useRegister } from "../../hooks/useRegister";
-import { generateCatpcha } from "../../utils/apiClient";
-import { useState } from "react";
+import { generateCaptcha } from "../../utils/apiClient";
+import { useEffect, useState } from "react";
 
-export default function register() {
-    const [gen_captcha_value] = useState(() => generateCatpcha());
-    const { captcha_value, setCaptchaValue,handleRegister, loading, errorMsg } = useRegister(() => (window.location.href="/postregister"));
+export default function Register() {
+    const [gen_captcha_value, setGenCaptchaValue] = useState('');
+    const { captcha_value, setCaptchaValue,handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
+    useEffect(() => {
+        const fetchCaptcha = async () => {
+            const captcha = await generateCaptcha();
+            setGenCaptchaValue(captcha);
+        };
+        fetchCaptcha();
+    },[]);
+    
     return(
         <div className="register-main-container h-screen w-screen">
 
@@ -24,14 +33,14 @@ export default function register() {
 
                     <form onSubmit={handleRegister}>
                         <div className="captcha-code flex flex-row py-2">
-                            <div className="flex flex-row w-full h-full p-2 border-1 text-center items-center justify-center tracking-[1em] text-sm border-slate-500/10 rounded text-white/80">
+                            <div className="flex flex-row w-full h-full p-2 border text-center items-center justify-center tracking-wide text-sm border-slate-500/10 rounded text-white/80">
                                 {gen_captcha_value}
                             </div>
                             
                             <div className="flex w-auto h-auto items-center text-center justify-center px-2 text-white/40"><ArrowRight size={24}/></div>
                             
-                            <div className="flex flex-row w-full h-full p-2 border-1 tracking-wider border-slate-500/10 rounded text-white/80">
-                                <input required value={captcha_value} onChange={(e) => setCaptchaValue(e.target.value)} maxLength={6} placeholder="000000" className="w-full h-full text-center items-center justify-center tracking-[1em] text-sm text-white/80" type="text" />
+                            <div className="flex flex-row w-full h-full p-2 border tracking-wider border-slate-500/10 rounded text-white/80">
+                                <input required value={captcha_value} onChange={(e) => setCaptchaValue(e.target.value)} maxLength={6} placeholder="000000" className="w-full h-full text-center items-center justify-center tracking-wide text-sm text-white/80" type="text" />
                             </div>
                         </div>
 
@@ -46,6 +55,6 @@ export default function register() {
     );
 }
 /*
-<div className="login-card p-4 m-6 bg-[#101413] border-1 border-white/10 w-100 h-100">
+<div className="login-card p-4 m-6 bg-[#101413] border border-white/10 w-100 h-100">
 </div>
 */
