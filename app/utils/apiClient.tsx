@@ -60,15 +60,20 @@ export const keyRegister = async (captcha_value:string) => {
 export const generateCaptcha = async() => {
     try{
         const res =  await getData('/api/finances/auth/captcha');
+        
+        if(!res.ok){
+            throw new Error(`Error fetching the catpcha code. Status: ${res.status}`);
+        }
+
         const data = await res.json();
         console.log('Captcha generado: ', data);
-        if(res){
+        if(data && data.captcha_value){
             return data.captcha_value;
-        }else{
-            return res?.error;
+        } else{
+            throw new Error (`The response has not the expected value.`);
         }
         
-    }catch(err:any){throw err.message}
+    }catch(err:any){ throw err.message || 'unknown error during the captcha value creation.'; }
 }
 
 export const getProfile = async (email:any) => {
