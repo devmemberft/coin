@@ -10,8 +10,18 @@ export default function Register() {
     const { captcha_value, setCaptchaValue,handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
     useEffect(() => {
         const fetchCaptcha = async () => {
-            const captcha = await generateCaptcha();
-            setGenCaptchaValue(captcha);
+            try{
+                const captcha = await generateCaptcha();
+                console.log('Captcha generado: ',captcha);
+                if(captcha && captcha !== ''){
+                    setGenCaptchaValue(captcha);
+                }
+                else{
+                    setGenCaptchaValue('Error al cargar captcha');
+                    console.log('Error, no se ha recibido captcha.');
+                }
+
+            }catch(error:any){error.message, setGenCaptchaValue('Error al cargar captcha');}
         };
         fetchCaptcha();
     },[]);
@@ -34,7 +44,7 @@ export default function Register() {
                     <form onSubmit={handleRegister}>
                         <div className="captcha-code flex flex-row py-2">
                             <div className="flex flex-row w-full h-full p-2 border text-center items-center justify-center tracking-wide text-sm border-slate-500/10 rounded text-white/80">
-                                {gen_captcha_value}
+                                {gen_captcha_value === '' ? (<p>Cargando Captcha...</p>):(gen_captcha_value)}
                             </div>
                             
                             <div className="flex w-auto h-auto items-center text-center justify-center px-2 text-white/40"><ArrowRight size={24}/></div>
