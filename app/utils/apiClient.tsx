@@ -53,8 +53,8 @@ export const keyLogout = async () => {
     }catch(err:any){throw err} 
 }
 
-export const keyRegister = async (captcha:Object) => {
-    return await postData<{success:boolean}>('/api/finances/auth/register',captcha);
+export const keyRegister = async (captcha_value:string) => {
+    return await postData<{success:boolean}>('/api/finances/auth/register',captcha_value);
 }
 
 export const generateCaptcha = async() => {
