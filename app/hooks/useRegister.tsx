@@ -2,14 +2,14 @@ import { useState } from "react"
 import { keyRegister } from "../utils/apiClient";
 
 export function useRegister(onSuccess?: () => void){
-    const [captcha_value,setCaptchaValue] = useState("");
+    const [captcha_value,setCaptchaValue] = useState('');
     const [compare_captcha_value, setCompareCaptchaValue,] = useState('');
     const [loading, setLoading] = useState(false);
-    const [errorMsg,setErrorMsg] = useState("");
+    const [errorMsg,setErrorMsg] = useState('');
 
     const handleRegister = async(e:React.FormEvent) => {
         e.preventDefault();
-        setErrorMsg("");
+        setErrorMsg('');
         setLoading(true);
 
         try{

@@ -6,7 +6,7 @@ import { generateCaptcha } from "../../utils/apiClient";
 import { useEffect, useState } from "react";
 
 export default function Register() {
-    const [gen_captcha_value, setGenCaptchaValue] = useState<string|null>('');
+    const [gen_captcha_value, setGenCaptchaValue] = useState('');
     const { captcha_value, setCaptchaValue, compare_captcha_value, setCompareCaptchaValue, handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
     
     useEffect(()=>{
@@ -18,7 +18,7 @@ export default function Register() {
                     setCompareCaptchaValue(captcha.captcha_value);
                 }
                 
-            }catch(error:any){error.message, setGenCaptchaValue(null); }
+            }catch(error:any){error.message, setGenCaptchaValue(error.message); }
     
         }
         if(gen_captcha_value==='' || compare_captcha_value===''){
