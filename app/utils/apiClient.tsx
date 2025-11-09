@@ -53,8 +53,8 @@ export const keyLogout = async () => {
     }catch(err:any){throw err} 
 }
 
-export const keyRegister = async (captcha_value:string) => {
-    return await postData<{success:boolean}>('/api/finances/auth/register',captcha_value);
+export const keyRegister = async (captcha:Object) => {
+    return await postData<{success:boolean}>('/api/finances/auth/register',captcha);
 }
 
 export const generateCaptcha = async() => {
@@ -63,7 +63,7 @@ export const generateCaptcha = async() => {
         console.log('Captcha generado: ', response);
 
         if(response && response.captcha_value){
-            return response.captcha_value;
+            return response;
         } else{
             throw new Error (`The response has not the expected value.`);
         }

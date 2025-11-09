@@ -7,17 +7,23 @@ import { useEffect, useState } from "react";
 
 export default function Register() {
     const [gen_captcha_value, setGenCaptchaValue] = useState<string|null>('');
-    const { captcha_value, setCaptchaValue,handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
+    const [gen_captcha_id, setGenCaptchaId] = useState<string|null>('');
+    const { captcha_value, setCaptchaValue, captcha_id, setCaptchaId, compare_captcha_value, setCompareCaptchaValue, handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
     
     useEffect(()=>{
         const fetchCaptcha = async () => {
             try{
                 const captcha = await generateCaptcha();
-                setGenCaptchaValue(captcha);
+                if(captcha){
+                    setGenCaptchaId(captcha.captcha_id);
+                    setCaptchaId(captcha.captcha_id);
+                }
+                setGenCaptchaValue(captcha.captcha_value);
+                setCompareCaptchaValue(captcha.captcha_value);
             }catch(error:any){error.message, setGenCaptchaValue(null); }
     
         }
-        if(gen_captcha_value===''){
+        if(gen_captcha_value==='' && gen_captcha_id === ''){
             fetchCaptcha();
         }
     },[gen_captcha_value]);
@@ -50,7 +56,7 @@ export default function Register() {
                             </div>
                         </div>
 
-                        {errorMsg && (<p className="text-white/60 px-1">{errorMsg}</p>)}
+                        {errorMsg && (<p className="text-white/60 px-1 m-1 border">{errorMsg}</p>)}
                         
                         <button type="submit" disabled={loading} className="flex flex-row items-center justify-center w-full mt-4 mb-2 py-1 rounded  bg-[#07af4a] shadow-green-400 shadow-xs text-black/80 text-lg font-medium tracking-normal border-2 border-slate-500/10 cursor-pointer hover:bg-[#07af4ad7] transition-colors duration-200"><LogIn size={18}/><p className="px-2 text-lg font-semibold">{loading ? "CREANDO..." : 'CREAR CUENTA'}</p></button>
 
@@ -63,6 +69,4 @@ export default function Register() {
 /*
 <div className="login-card p-4 m-6 bg-[#101413] border border-white/10 w-100 h-100">
 </div>
-
-    
 */
