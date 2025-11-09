@@ -16,8 +16,8 @@ export default function Register() {
                 if(captcha){
                     setGenCaptchaValue(captcha.captcha_value);
                 }
-                if(captcha_value){
-                    setCompareCaptchaValue(captcha_value);
+                if(gen_captcha_value){
+                    setCompareCaptchaValue(gen_captcha_value);
                 }
                 if(compare_captcha_value){
                     console.log(`Valor generado: ${gen_captcha_value}, Valor ingresado: ${captcha_value}, Valor comparado: ${compare_captcha_value}`);

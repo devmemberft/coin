@@ -13,6 +13,7 @@ export function useRegister(onSuccess?: () => void){
         setLoading(true);
 
         if(!captcha_value){
+            alert('Please Complete the Captcha.');
             setErrorMsg('Please Complete the Captcha.');
             setLoading(false);
             return;
