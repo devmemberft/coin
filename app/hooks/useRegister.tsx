@@ -25,7 +25,11 @@ export function useRegister(onSuccess?: () => void){
         try{
             const registration = await keyRegister(captcha_value);
             console.log(registration);
-            if(registration.success){onSuccess?.() }else{ setErrorMsg(`Incorrect Captcha value, invalid. Try again or Contact support. `); }
+            if(registration.success){
+                onSuccess?.() 
+            }else{ 
+                setErrorMsg(`Incorrect Captcha value, invalid. Try again or Contact support. `); 
+            }
         }catch(error:any){setErrorMsg(error?.message || 'Error during the Captcha validation. Try again or Contact API support. ')} finally{ setLoading(false); }
     }
 

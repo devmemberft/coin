@@ -17,9 +17,11 @@ export default function Register() {
                 if(captcha){
                     setGenCaptchaId(captcha.captcha_id);
                     setCaptchaId(captcha.captcha_id);
+                    setGenCaptchaValue(captcha.captcha_value);
                 }
-                setGenCaptchaValue(captcha.captcha_value);
-                setCompareCaptchaValue(captcha.captcha_value);
+                if(captcha_value){
+                    setCompareCaptchaValue(captcha_value);
+                }
             }catch(error:any){error.message, setGenCaptchaValue(null); }
     
         }
@@ -56,7 +58,7 @@ export default function Register() {
                             </div>
                         </div>
 
-                        {errorMsg && (<p className="text-white/60 px-1 m-1 border">{errorMsg}</p>)}
+                        {errorMsg && (<p className="text-white/60 text-center items-center px-1 m-1 border">{errorMsg}</p>)}
                         
                         <button type="submit" disabled={loading} className="flex flex-row items-center justify-center w-full mt-4 mb-2 py-1 rounded  bg-[#07af4a] shadow-green-400 shadow-xs text-black/80 text-lg font-medium tracking-normal border-2 border-slate-500/10 cursor-pointer hover:bg-[#07af4ad7] transition-colors duration-200"><LogIn size={18}/><p className="px-2 text-lg font-semibold">{loading ? "CREANDO..." : 'CREAR CUENTA'}</p></button>
 

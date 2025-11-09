@@ -23,7 +23,7 @@ export const postData = async <T = any>(endpoint:string, data:any): Promise<T> =
         const response = await api.post<T>(endpoint,data);
         return response.data;
     } catch(error:any) {
-        throw error.response?.data || { message: "Unexpected error. Check de postData method in utils "};
+        throw error.response?.data || { message: "Unexpected error. Check de postData method in utils. "};
     }
 }
 
