@@ -12,17 +12,17 @@ export function useRegister(onSuccess?: () => void){
         setErrorMsg("");
         setLoading(true);
 
-        if(!captcha_value){
-            alert('Please Complete the Captcha.');
-            setErrorMsg('Please Complete the Captcha.');
-            setLoading(false);
-            return;
-        }
-        if(compare_captcha_value !== captcha_value){
-            alert('Incorrect Captcha, please try once again.');
-            console.log(`Incorrect Captcha, please try once again. ${compare_captcha_value} is different of ${captcha_value}`);
-        }
         try{
+            if(!captcha_value){
+                alert('Please Complete the Captcha.');
+                setErrorMsg('Please Complete the Captcha.');
+                setLoading(false);
+                return;
+            }
+            if(compare_captcha_value !== captcha_value){
+                alert('Incorrect Captcha, please try once again.');
+                console.log(`Incorrect Captcha, please try once again. ${compare_captcha_value} is different of ${captcha_value}`);
+            }
             const registration = await keyRegister(captcha_value);
             console.log(registration);
             if(registration.success){

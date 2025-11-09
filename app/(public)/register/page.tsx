@@ -15,17 +15,13 @@ export default function Register() {
                 const captcha = await generateCaptcha();
                 if(captcha){
                     setGenCaptchaValue(captcha.captcha_value);
+                    setCompareCaptchaValue(captcha.captcha_value);
                 }
-                if(gen_captcha_value){
-                    setCompareCaptchaValue(gen_captcha_value);
-                }
-                if(compare_captcha_value){
-                    console.log(`Valor generado: ${gen_captcha_value}, Valor ingresado: ${captcha_value}, Valor comparado: ${compare_captcha_value}`);
-                }
+                
             }catch(error:any){error.message, setGenCaptchaValue(null); }
     
         }
-        if(gen_captcha_value===''){
+        if(gen_captcha_value==='' || compare_captcha_value===''){
             fetchCaptcha();
         }
     },[gen_captcha_value]);
