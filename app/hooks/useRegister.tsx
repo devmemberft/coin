@@ -19,7 +19,7 @@ export function useRegister(onSuccess?: () => void){
         }
         if(compare_captcha_value !== captcha_value){
             alert('Incorrect Captcha, please try once again.');
-            console.log('Incorrect Captcha, please try once again.');
+            console.log(`Incorrect Captcha, please try once again. ${compare_captcha_value} es diferente de ${captcha_value}`);
         }
         try{
             const registration = await keyRegister(captcha_value);
