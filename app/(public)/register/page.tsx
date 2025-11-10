@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Register() {
     const [gen_captcha_value, setGenCaptchaValue] = useState('');
-    const { captcha_value, setCaptchaValue, compare_captcha_value, setCompareCaptchaValue, handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
+    const { captcha_value, setCaptchaValue, handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
     
     useEffect(()=>{
         const fetchCaptcha = async () => {
@@ -15,13 +15,16 @@ export default function Register() {
                 const captcha = await generateCaptcha();
                 if(captcha){
                     setGenCaptchaValue(captcha.captcha_value);
-                    setCompareCaptchaValue(captcha.captcha_value);
+                }
+                if(gen_captcha_value === captcha_value){
+                    alert(`${gen_captcha_value} y ${captcha_value} son los mismo, vamos por buen camino`);
+                    console.log(`${gen_captcha_value} y ${captcha_value}`);
                 }
                 
             }catch(error:any){error.message, setGenCaptchaValue(error.message); }
     
         }
-        if(gen_captcha_value==='' || compare_captcha_value===''){
+        if(gen_captcha_value===''){
             fetchCaptcha();
         }
     },[gen_captcha_value]);
