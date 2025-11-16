@@ -1,30 +1,35 @@
 export default function AddTransaction(){
     return(
         <main className="min-h-screen p-4 bg-transparent">
-            <h1 className="text-xl font-bold mb-4">Nueva Transacción</h1>
+            <div className="flex w-full items-center text-center align-center"><h1 className="text-xl font-bold my-2">Nueva Transacción</h1></div>
 
             <form className="space-y-4">
-                <select className="w-full p-3 border rounded-xl">
-                <option>Ingreso</option>
-                <option>Egreso</option>
-                </select>
+                <div className="amount">
+                    <input
+                    type=""
+                    required
+                    placeholder="Monto"
+                    className="w-full p-6 font-bold text-4xl items-center text-center align-center"
+                    />
+                </div>
+                <div className="type flex flex-row space-x-2 border border-white/20 rounded-xl">
+                    <option className="w-full p-3 hover:bg-green-800 hover:border-x border-white/10 rounded-xl">+ Ingreso</option>
+                    <option className="w-full p-3 hover:bg-green-800 hover:border-x border-white/10 rounded-xl">- Egreso</option>
+                    <option className="w-full p-3 hover:bg-green-800 hover:border-x border-white/10 rounded-xl">= Inversion</option>
+                </div>
 
-                <input
-                type="number"
-                placeholder="Ingrese el monto de la transacción"
-                className="w-full p-3 border rounded-xl"
-                />
+                <div className="space-y-2">
+                    <select className="w-full p-3 border border-white/20 rounded-xl">
+                    <option>Categoria</option>
+                    <option>Comida</option>
+                    <option>Transporte</option>
+                    </select>
 
-                <select className="w-full p-3 border rounded-xl">
-                <option>General</option>
-                <option>Comida</option>
-                <option>Transporte</option>
-                </select>
-
-                <textarea
-                placeholder="Descripción (opcional)"
-                className="w-full p-3 border rounded-xl"
-                />
+                    <textarea
+                    placeholder="Descripción"
+                    className="w-full p-2 border border-white/20 rounded-xl"
+                    />
+                </div>
 
                 <div className="flex gap-4">
                 <button type="submit" className="flex-1 bg-green-800 text-white p-3 rounded-xl">Guardar</button>
