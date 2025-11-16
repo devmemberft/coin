@@ -1,3 +1,4 @@
+import {MoveUpRight, MoveDownLeft, TrendingUp} from "lucide-react"
 export default function AddTransaction(){
     return(
         <main className="min-h-screen p-4 bg-transparent">
@@ -8,14 +9,28 @@ export default function AddTransaction(){
                     <input
                     type=""
                     required
+                    maxLength={4}
                     placeholder="Monto"
                     className="w-full p-6 font-bold text-4xl items-center text-center align-center"
                     />
                 </div>
                 <div className="type flex flex-row space-x-2 border border-white/20 rounded-xl">
-                    <option className="w-full p-3 hover:bg-green-800 hover:border-x border-white/10 rounded-xl">+ Ingreso</option>
-                    <option className="w-full p-3 hover:bg-green-800 hover:border-x border-white/10 rounded-xl">- Egreso</option>
-                    <option className="w-full p-3 hover:bg-green-800 hover:border-x border-white/10 rounded-xl">= Inversion</option>
+                    
+                    <button className="flex flex-row w-full justify-between p-2 hover:bg-green-800 hover:border-x border-white/10 rounded-xl cursor-pointer">   
+                        <MoveUpRight size={20}/>
+                        <option selected className="w-full">Ingreso</option>
+                    </button>
+
+                    <button className="flex flex-row w-full justify-between p-2 hover:bg-green-800 hover:border-x border-white/10 rounded-xl cursor-pointer">
+                        <MoveDownLeft size={20}/>
+                        <option className="w-full">Egreso</option>
+                    </button>
+
+                    <button className="flex flex-row w-full justify-between p-2 hover:bg-green-800 hover:border-x border-white/10 rounded-xl cursor-pointer">
+                        <TrendingUp size={20}/>
+                        <option className="w-full">Inversion</option>
+                    </button>
+
                 </div>
 
                 <div className="space-y-2">

@@ -16,14 +16,16 @@ export default function Savings(){
                     <p className="font-bold w-32">16/11/25</p>
                 </div>
 
-                <div className="flex flex-col w-full items-center align-center">
-                    <p className="text-4xl font-bold text-white p-4">$15.60</p>
+                <div className="flex w-full">
+                    <input placeholder="$10,00" required maxLength={4} className="flex align-center text-center items-center text-4xl font-bold text-white p-4"></input>
                 </div>
+
                 <div className="flex flex-row w-full justify-between p-2">
 
                     <p>Compras de la cena en el super</p>
                     <p className="border-b-1 border-white/20">Categoria</p>
                 </div>
+
                 <div className="flex flex-row w-full p-2 justify-between align-middle text-center items-center">
 
                     <button className="border border-white/20 rounded-xl p-2 hover:bg-gray-800/80 cursor-pointer">Guardar</button>
