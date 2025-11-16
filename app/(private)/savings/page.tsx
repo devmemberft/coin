@@ -1,27 +1,35 @@
 export default function Savings(){
     return(
-        <main className="min-h-screen p-4 bg-transparent text-gray-900">
-            <h1 className="text-xl font-bold mb-4">Mis Ahorros</h1>
+        <main className="flex flex-col min-h-screen p-4 bg-transparent text-white/80">
+            <section className="flex w-full h-60 align-center items-center text-center justify-center">
+                <div>Aqui informacion sobre el tipo de transaccion y que mejora se puede hacer sobre ella</div>
+            </section>
+            <section className=" bg-green-500/40 rounded-xl p-2">
+                <div className="flex flex-row justify-between">
+                <h1 className="font-bold text-xl">Informacion de transaccion</h1>
+                </div>
+                <div className="flex w-full border-b-1 border-white/20 py-1"></div>
 
-            <div className="space-y-4">
-                <div className="bg-yellow-100 rounded-xl p-4 shadow">
-                <p className="text-sm font-medium">Viaje a Medellín</p>
-                <div className="w-full bg-yellow-200 h-2 rounded mt-2 mb-1">
-                    <div className="bg-yellow-500 h-2 w-[60%] rounded" />
-                </div>
-                <p className="text-xs text-right">60% - $600 / $1,000</p>
+                <div className="flex flex-row justify-between p-2 space-x-2 items-center text-center align-center">
+                    <p className="rounded-full w-12 h-8 border border-white/20"></p>
+                    <p className="w-full">Gastos</p>
+                    <p className="font-bold w-32">16/11/25</p>
                 </div>
 
-                <div className="bg-indigo-100 rounded-xl p-4 shadow">
-                <p className="text-sm font-medium">Laptop nueva</p>
-                <div className="w-full bg-indigo-200 h-2 rounded mt-2 mb-1">
-                    <div className="bg-indigo-600 h-2 w-[30%] rounded" />
+                <div className="flex flex-col w-full items-center align-center">
+                    <p className="text-4xl font-bold text-white p-4">$15.60</p>
                 </div>
-                <p className="text-xs text-right">30% - $300 / $1,000</p>
-                </div>
-            </div>
+                <div className="flex flex-row w-full justify-between p-2">
 
-            <button className="mt-6 w-full bg-black text-white rounded-xl p-3">+ Nueva Meta</button>
+                    <p>Compras de la cena en el super</p>
+                    <p className="border-b-1 border-white/20">Categoria</p>
+                </div>
+                <div className="flex flex-row w-full p-2 justify-between align-middle text-center items-center">
+
+                    <button className="border border-white/20 rounded-xl p-2 hover:bg-green-800/80 cursor-pointer">Guardar</button>
+                    <button className="border border-white/20 rounded-xl p-2 hover:bg-red-700/70 cursor-pointer">Eliminar</button>
+                </div>
+            </section>
         </main>
     );
 }
