@@ -26,7 +26,7 @@ export default function Savings(){
                 </div>
                 <div className="flex flex-row w-full p-2 justify-between align-middle text-center items-center">
 
-                    <button className="border border-white/20 rounded-xl p-2 hover:bg-green-800/80 cursor-pointer">Guardar</button>
+                    <button className="border border-white/20 rounded-xl p-2 hover:bg-gray-800/80 cursor-pointer">Guardar</button>
                     <button className="border border-white/20 rounded-xl p-2 hover:bg-red-700/70 cursor-pointer">Eliminar</button>
                 </div>
             </section>
