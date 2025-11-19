@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const api = axios.create({
     baseURL:'https://api.rawtechroots.cloud',
-    withCredentials: true,
-    
     headers: {
         'Content-Type':'application/json',
     },

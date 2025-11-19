@@ -18,6 +18,7 @@ export function useRegister(onSuccess?: () => void){
                 setLoading(false);
                 return;
             }
+            
             const registration = await keyRegister(captcha_value);
             console.log(registration);
             if(registration.success){

@@ -10,24 +10,20 @@ export default function Register() {
     const { captcha_value, setCaptchaValue, handleRegister, loading, errorMsg } = useRegister(() => {window.location.href='/postregister'; });
     
     useEffect(()=>{
+        console.log('checkpoint');
         const fetchCaptcha = async () => {
             try{
                 const captcha = await generateCaptcha();
-                if(captcha){
+                console.log(captcha);
+                if(captcha?.captcha_value){
                     setGenCaptchaValue(captcha.captcha_value);
                 }
-                if(gen_captcha_value === captcha_value){
-                    alert(`${gen_captcha_value} y ${captcha_value} son los mismo, vamos por buen camino`);
-                    console.log(`${gen_captcha_value} y ${captcha_value}`);
-                }
-                
-            }catch(error:any){error.message, setGenCaptchaValue(error.message); }
+            }catch(error:any){error.message}
+            
+        }
+        fetchCaptcha();
+    },[]);
     
-        }
-        if(gen_captcha_value===''){
-            fetchCaptcha();
-        }
-    },[gen_captcha_value]);
 
     return(
         <div className="register-main-container h-screen w-screen">
