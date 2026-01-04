@@ -1,59 +1,53 @@
-import { Settings } from "lucide-react";
+import { Settings, SquarePlus } from "lucide-react";
+import { ArrowLeft, ArrowRight,ArrowDown, Edit } from "lucide-react";
+import Link from "next/link";
 
 export default function Home(){
     return(
         <div className="home-main-container max-w-md mx-auto px-4">
+            <nav className="bookname mt-2 mb-4">Libro por defecto</nav>
+            <main className="resume">
+                <div className="date-month-year flex flex-row justify-baseline align-center text-sm space-x-2 text-gray-600">
+                    <ArrowLeft size={16}/>
+                    <p>Day / Month</p>
+                    <ArrowRight size={16}/>
+                </div>
 
-            <main className="min-h-screen p-4 bg-transparent text-gray-900 space-y-2 ">
-                
-                <section className="settings flex w-full justify-between align-center">
-                    <h1 className="flex text-xl text-white font-bold mb-4 align-center text-center justify-center">Bienvenido</h1>
-                    <button className="setting-button cursor-pointer"><Settings color={'white'}size={22}/></button>
-                </section>
-                
-                <section className="information w-full flex justify-between py-2 text-xs">
-                    <p className="register-date font-bold text-white">Fecha de registro</p>
-                    <p className="data text-white">Variable fecha</p>
-                </section>
-
-
-                <section className="Psico-profile w-full flex flex-row text-white/80">
-                    <div><p className="py-2 text-sm">Descubre tu perfil psicologico basado en tus gastos</p></div>
-                </section>
-
-                <section className="General-overview flex text-white flex-col space-y-2">
-                    <div className="income flex flex-row space-x-2 justify-between border border-white/20 p-2 bg-transparent rounded-xl">
-                        <p className="font-bold">Ingresos Totales</p>
-                        <p>$1,230</p>
+                <div className="budget flex align-center justify-center text-center items-center space-x-2 space-y-2 flex-col m-2 bg-gray-200/50 shadow-xs rounded-md p-8 ">
+                    <p>Presupuesto Mensual Restante</p>
+                    <h1 className="text-xl font-bold">$1,120</h1>
+                    <div className="flex flex-row justify-between text-xs text-gray-600 space-x-2 ">
+                        <p>Presupuesto total: $1,200</p> 
+                        <Edit size={14}/>
                     </div>
-                    <div className="expenses flex flex-row space-x-2 justify-between border border-white/20 p-2 bg-transparent rounded-xl">
-                        <p className="font-bold">Gastos Totales</p>
-                        <p>$789</p>
-                    </div>
-                </section>
-                
-                <section className="transactions-resume flex flex-col gap-4 mt-2 border border-white/10 p-4 rounded-t-xl">
-                    <p className="Transactions-list text-white font-bold text-xl">Ultimas transacciones</p>
+                </div>
 
-                    <div className="flex flex-row justify-between border-b-1 border-white/20 p-2 shadow">
-                        <p className="text-white font-bold text-sm">Gasto</p>
-                        <p className="text-sm font-semibold text-white/80">$300</p>
+                <div className="income-expense flex flex-row m-2 space-x-2 justify-between">
+                    <div className="income align-center text-center w-full flex flex-col p-4 border-1 border-gray-100/10  bg-gray-200/50 shadow-xs rounded-md">
+                        <p>Income</p>
+                        <p className="text-green-800">$1,200</p>
                     </div>
-
-                    <div className="flex flex-row justify-between border-b-1 border-white/20 p-2 shadow">
-                        <p className="text-white font-bold text-sm">Ingreso</p>
-                        <p className="text-sm font-semibold text-white/80">$1,500</p>
+                    <div className="expense align-center text-center w-full flex flex-col p-4 border-1 border-gray-100/10  bg-gray-200/50 shadow-xs rounded-md">
+                        <p>Expense</p>
+                        <p className="text-red-800">$80,00</p>
                     </div>
-
-                    <div className="flex flex-row justify-between border-b-1 border-white/20 p-2 shadow">
-                        <p className="text-white font-bold text-sm">Ingreso</p>
-                        <p className="text-sm font-semibold text-white/80">$600</p>
-                    </div>
-                </section>
-
-                <button className="w-full cursor-pointer border border-white/20 text-white rounded-xl p-3 hover:bg-green-800/20">+ Nueva Transacción</button>
+                </div>
             </main>
-
+            <main className="transactions">
+                <div className="details flex flex-row justify-between text-sm px-2 mb-2 text-gray-600">
+                    <div className="date-day-month"><p>Day / Month</p></div>
+                    <div className="amounts-income-expense flex flex-row space-x-2 "><p>Expense:$amount Income:$amount</p><ArrowDown size={16}/></div>
+                </div>
+                <div className="last-transactions m-2 rounded-md border-b-1 border-l-1 border-r-1 border-gray-300">
+                    <div className="transaction-map flex flex-row justify-between p-2 border-t-1 border-gray-300 ">Transaction 1</div>
+                    <div className="transaction-map flex flex-row justify-between p-2 border-t-1 border-gray-300 ">Transaction 2</div>
+                    <div className="transaction-map flex flex-row justify-between p-2 border-t-1 border-gray-300 ">Transaction 3</div>
+                </div>
+            </main>
+            <div className="add-transaction h-full flex justify-end">
+                <Link href={'/transactions'}><button className="cursor-pointer p-2" ><SquarePlus size={20}/></button></Link>
+            </div>
+            
         </div>
     );
 }

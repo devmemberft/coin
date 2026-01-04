@@ -12,7 +12,7 @@ export const getData = async <T = any>(endpoint:string): Promise<T> => {
         const response = await api.get<T>(endpoint);
         return response.data;
     } catch(error:any) {
-        throw error.response?.data || { message: "Unexpected error."};
+        throw error.response?.data || { message: "Error, please visit api documentation or contact support. "};
     }
 };
 
@@ -20,16 +20,14 @@ export const postData = async <T = any>(endpoint:string, data:any): Promise<T> =
     try{
         const response = await api.post<T>(endpoint,data);
         return response.data;
-    } catch(error:any) {
-        throw error.response?.data || { message: "Unexpected error. Check de postData method in utils. "};
-    }
+    } catch(error:any) { throw error.response?.data || { message: "Error, please visit api documentation or contact support. "}; }
 }
 
 export const patchData = async <T = any>(endpoint:string, data:any): Promise<T> => {
     try{
         const response = await api.patch<T>(endpoint,data);
         return response.data;
-    }catch(error:any){ throw error.response?.data || { message: "An Error has occurred, visit api configuration. "}; }
+    }catch(error:any){ throw error.response?.data || { message: "Error, please visit api documentation or contact support. "}; }
 }
 
 export const credentialsLogin = async (email:string,password:string) => {
